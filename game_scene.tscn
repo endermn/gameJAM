@@ -1,7 +1,22 @@
 [gd_scene format=3 uid="uid://domtrwo6k8cpe"]
 
 [ext_resource type="Script" uid="uid://1mtppctx0rin" path="res://movement.gd" id="1_po0ka"]
+[ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soinu"]
+size = Vector2(387, 161)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_penkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1wow")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wj57k"]
 animations = [{
@@ -17,24 +32,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(61, 62.125)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_soinu"]
-size = Vector2(387, 74)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_penkd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_v1wow")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Node2D" type="Node2D" unique_id=1355961116]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1394398365]
+position = Vector2(-30, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1459535237]
+position = Vector2(332, -104)
+shape = SubResource("RectangleShape2D_soinu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D2" unique_id=726980828]
+position = Vector2(348, -107.5)
+scale = Vector2(3.2656252, 1.2109375)
+sprite_frames = SubResource("SpriteFrames_penkd")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1897136791]
 script = ExtResource("1_po0ka")
+CharacterMovement = ExtResource("2_mixcd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=2084181287]
 position = Vector2(-36.499996, -74.5)
@@ -57,10 +71,10 @@ drag_bottom_margin = 0.5
 position = Vector2(-15, 76)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1125628114]
-position = Vector2(-1, 19)
+position = Vector2(-40, 64)
 shape = SubResource("RectangleShape2D_soinu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=1768222061]
-position = Vector2(-4.999992, 18)
+position = Vector2(-4.0000305, 21)
 scale = Vector2(3.1093752, 0.5625)
 sprite_frames = SubResource("SpriteFrames_penkd")

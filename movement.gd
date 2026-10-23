@@ -1,25 +1,23 @@
-extends CharacterBody2D
+extends CharacterControllerPlatformer
 
-
-const SPEED = 7000.0
-const JUMP_VELOCITY = -20000.0
-
-
+var facing = 1.0
+ 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY * delta
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED * delta
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED) * delta
-
-	move_and_slide()
+	
+	var input_dir := Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+	CharacterVelocity.x = input_dir.x
+	if input_dir.x != 0:
+		facing = sign(input_dir.x); 
+		
+	if Input.is_action_just_pressed("jump"):
+		Jump()
+	
+	if Input.is_action_just_released("jump"):
+		StopJump()
+	if Input.is_action_just_pressed("dash") && CanDash():
+		var dash_dir := input_dir
+		if dash_dir == Vector2.ZERO:
+			dash_dir = Vector2(facing, 0.0)
+		
+		Dash(dash_dir.angle())
+	super._physics_process(delta)	
