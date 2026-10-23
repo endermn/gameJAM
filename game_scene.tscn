@@ -4,11 +4,13 @@
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
 [ext_resource type="Texture2D" uid="uid://de2gsxlph354x" path="res://assets/Machina_Dash_Ram.png" id="3_e35lh"]
+[ext_resource type="Script" uid="uid://d27e0kvy8c3i7" path="res://hitbox.gd" id="3_j5hk1"]
 [ext_resource type="Texture2D" uid="uid://cp16adpaffqwr" path="res://assets/Machina_Skate_Braking.png" id="3_udeyl"]
 [ext_resource type="Texture2D" uid="uid://e1rua7c8g5qv" path="res://assets/Machina_Skate_Faster.png" id="4_6e45b"]
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
+[ext_resource type="Script" uid="uid://bonuji8n8214y" path="res://hurtbox.gd" id="7_miq82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(13, 31.999992)
@@ -232,6 +234,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67ers"]
+size = Vector2(13, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_soinu"]
 animations = [{
 "frames": [{
@@ -263,33 +268,51 @@ radius = 5.0
 script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1524645715]
-position = Vector2(-213.5, -114)
+[node name="Hitbox" type="Area2D" parent="Player" unique_id=695870668]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_j5hk1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Hitbox" unique_id=2141346731]
+position = Vector2(0, -5)
+polygon = PackedVector2Array(-2, -13, 45, -13, 45, -5, -2, -5)
+
+[node name="collision" type="CollisionShape2D" parent="Player" unique_id=1524645715]
+position = Vector2(-8.5, -8)
 shape = SubResource("RectangleShape2D_penkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=2084181287]
-position = Vector2(-213.5, -116.5)
+position = Vector2(-8.5, -10.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
-animation = &"braking"
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.5
+drag_left_margin = 0.3
 drag_top_margin = 0.5
-drag_right_margin = 0.5
-drag_bottom_margin = 0.5
+drag_right_margin = 0.3
+drag_bottom_margin = 1.0
+
+[node name="Hurtbox" type="Area2D" parent="Player" unique_id=283932895]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_miq82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox" unique_id=1370162757]
+position = Vector2(-8.5, -8)
+shape = SubResource("RectangleShape2D_67ers")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=481126356]
 position = Vector2(-15, 76)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=963725822]
+position = Vector2(194, 107)
 polygon = PackedVector2Array(-225, -75, -225, -171, -149, -171, -150, -78, -4, -78, 68, -78, 68, -134, 118, -134, 120, -77, 206, -77, 205, -136, 266, -136, 266, -77, 322, -77, 322, -229, 404, -229, 406, 72, -225, 71)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=553771171]
-position = Vector2(89, -5.499997)
+position = Vector2(282, 99)
 scale = Vector2(4.9375, 1.0859375)
 sprite_frames = SubResource("SpriteFrames_soinu")
 
@@ -318,10 +341,10 @@ motion_mode = 1
 script = ExtResource("5_kdryc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Chicken" unique_id=2038744633]
-position = Vector2(-187.5, -131.5)
+position = Vector2(17.5, -25.5)
 scale = Vector2(0.40625, 0.40625)
 sprite_frames = SubResource("SpriteFrames_67ers")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chicken" unique_id=1398274652]
-position = Vector2(-187.5, -131.5)
+position = Vector2(17.5, -25.5)
 shape = SubResource("CircleShape2D_penkd")

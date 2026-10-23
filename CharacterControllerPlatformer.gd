@@ -141,7 +141,7 @@ func _HandleJump() -> void:
 			_last_jump_type = 1;
 			_rem_coyoto_time = 0;
 			var jumpH = (CharacterMovement.JumpHeight if !is_buffered else _bufferedJumpStrength  ) * CharacterMovement.GravityScale * physicsfps;
-			cVelocity.y = -jumpH;
+			cVelocity.y -= jumpH + abs(CharacterVelocity.x) * 20
 			jumping = true;
 			if jumpingPressed: 
 				_rem_jumpbuffer = 0;

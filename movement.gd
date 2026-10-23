@@ -4,6 +4,8 @@ extends CharacterControllerPlatformer
 var facing = 1.0
 var max_velocity = 2
 var breaking_force = 0.03
+@export var max_health = 100
+var current_health = max_health
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
  
 func _physics_process(delta: float) -> void:
@@ -47,6 +49,7 @@ func _physics_process(delta: float) -> void:
 		Dash(dash_dir.angle())
 		dashTimer = dashCooldown
 	if Input.is_action_just_pressed("jump"):
-		dashRemaining = 1
+		if onFloor:
+			dashRemaining = 1
 		Jump()
 	super._physics_process(delta)	
