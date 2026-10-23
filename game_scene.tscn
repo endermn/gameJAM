@@ -15,7 +15,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
-size = Vector2(130, 128.25)
+size = Vector2(61, 62.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soinu"]
+size = Vector2(387, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_penkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1wow")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D" unique_id=1355961116]
 
@@ -23,10 +37,30 @@ size = Vector2(130, 128.25)
 script = ExtResource("1_po0ka")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=2084181287]
-position = Vector2(0, -38)
-scale = Vector2(1.0937499, 1.0937499)
+position = Vector2(-36.499996, -74.5)
+scale = Vector2(0.52343744, 0.52343744)
 sprite_frames = SubResource("SpriteFrames_wj57k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1524645715]
-position = Vector2(-2, -39)
+position = Vector2(-36, -75)
 shape = SubResource("RectangleShape2D_penkd")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1726395647]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=481126356]
+position = Vector2(-15, 76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1125628114]
+position = Vector2(-1, 19)
+shape = SubResource("RectangleShape2D_soinu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=1768222061]
+position = Vector2(-4.999992, 18)
+scale = Vector2(3.1093752, 0.5625)
+sprite_frames = SubResource("SpriteFrames_penkd")
