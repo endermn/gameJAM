@@ -58,7 +58,11 @@ func _physics_process(delta: float) -> void:
 	onWall = rightWall || leftWall;
 	
 	onEdge = !test_move(global_transform.translated(Vector2(CharacterMovement.EdgeCheckDistance*_last_turned_dir,1)), Vector2(0,1))
-	
+	if rightWall and CharacterVelocity.x > 0.1:
+		CharacterVelocity.x = 0
+	if leftWall and CharacterVelocity.x < -0.1:
+		CharacterVelocity.x = 0
+		
 	if sign(CharacterVelocity.x) != 0 && _last_turned_dir != sign(CharacterVelocity.x) && sign(CharacterVelocity.x) != sign(velocity.x):
 		_last_turned_dir = sign(CharacterVelocity.x);
 		onTurned.emit(_last_turned_dir)

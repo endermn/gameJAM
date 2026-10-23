@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1mtppctx0rin" path="res://movement.gd" id="1_po0ka"]
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
+[ext_resource type="Texture2D" uid="uid://e1rua7c8g5qv" path="res://assets/Machina_Skate_Faster.png" id="4_6e45b"]
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
@@ -15,6 +16,46 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("4_mixcd")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e35lh"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udeyl"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miq82"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5hk1"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueiaa"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daj04"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlphb"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opqoc"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpcsf"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d2pr"]
+atlas = ExtResource("4_6e45b")
+region = Rect2(288, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wj57k"]
 animations = [{
 "frames": [{
@@ -26,6 +67,41 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e35lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udeyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miq82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5hk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueiaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daj04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlphb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opqoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpcsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d2pr")
+}],
+"loop": 1,
+"name": &"sprint",
 "speed": 5.0
 }]
 
@@ -67,6 +143,8 @@ CharacterMovement = ExtResource("2_mixcd")
 position = Vector2(-213.5, -116.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
+animation = &"sprint"
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1524645715]
 position = Vector2(-213.5, -114)
@@ -84,7 +162,7 @@ drag_bottom_margin = 0.5
 position = Vector2(-15, 76)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=963725822]
-polygon = PackedVector2Array(-224, -76, -225, -168, -149, -171, -149, -81, -4, -78, 69, -80, 68, -134, 118, -134, 120, -77, 206, -77, 206, -143, 266, -140, 265, -78, 324, -80, 319, -221, 400, -229, 406, 72, -231, 59)
+polygon = PackedVector2Array(-225, -75, -225, -171, -149, -171, -150, -78, -4, -78, 68, -78, 68, -134, 118, -134, 120, -77, 206, -77, 205, -136, 266, -136, 266, -77, 322, -77, 322, -229, 404, -229, 406, 72, -225, 71)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=553771171]
 position = Vector2(89, -5.499997)
@@ -92,8 +170,8 @@ scale = Vector2(4.9375, 1.0859375)
 sprite_frames = SubResource("SpriteFrames_soinu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/AnimatedSprite2D" unique_id=541632391]
-position = Vector2(-55.49368, -108.20145)
-scale = Vector2(0.13244174, 0.7066331)
+position = Vector2(-55.508698, -105.38773)
+scale = Vector2(0.13267654, 0.74900013)
 sprite_frames = SubResource("SpriteFrames_soinu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=121735814]

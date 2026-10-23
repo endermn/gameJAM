@@ -43,13 +43,15 @@ func Dash(direction:float):
 		elif _d == 90: multiplier.y = CharacterMovement.Dash_down_scale;
 		var speed = Vector2.RIGHT.rotated((direction) );
 		cVelocity = speed * CharacterMovement.Dash_Strength * multiplier * physicsfps;
+		CharacterVelocity.x += abs(cVelocity.x) * sign(CharacterVelocity.x)
+		CharacterVelocity.y += abs(cVelocity.y) * sign(CharacterVelocity.y)
 		deactive_input = CharacterMovement.Dash_input_cooldown;
 		move_cooldown = Vector2(.5, 1) * CharacterMovement.Dash_input_cooldown;
 		dashIsActive = true;
 		onDash.emit();
 		await get_tree().create_timer(CharacterMovement.Dash_Strength * CharacterMovement.Dash_input_cooldown).timeout;
 		dashIsActive = false;
-		onDashFinished.emit();
+		#onDashFinished.emit();
 
 func CanDash() -> bool:
 	return dashRemaining > 0;
