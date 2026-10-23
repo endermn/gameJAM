@@ -32,7 +32,8 @@ var rightWall:bool = false;
 var leftWall:bool = false;
 
 var onEdge:bool = false;
-
+var dashCooldown = 30
+var dashTimer = dashCooldown
 
 var _rem_jumpbuffer:float	 = 0.;
 var _rem_coyoto_time:float = 0.;
@@ -58,7 +59,11 @@ func _physics_process(delta: float) -> void:
 	onWall = rightWall || leftWall;
 	
 	onEdge = !test_move(global_transform.translated(Vector2(CharacterMovement.EdgeCheckDistance*_last_turned_dir,1)), Vector2(0,1))
-	
+	if rightWall and CharacterVelocity.x > 0.1:
+		CharacterVelocity.x = 0
+	elif leftWall and CharacterVelocity.x < -0.1:
+		CharacterVelocity.x = 0
+		
 	if sign(CharacterVelocity.x) != 0 && _last_turned_dir != sign(CharacterVelocity.x) && sign(CharacterVelocity.x) != sign(velocity.x):
 		_last_turned_dir = sign(CharacterVelocity.x);
 		onTurned.emit(_last_turned_dir)
@@ -95,8 +100,10 @@ func _physics_process(delta: float) -> void:
 	CalcCornerCorrection()
 	move_and_slide()
 	cVelocity = velocity;
-	if is_on_floor():
+	dashTimer -= 1
+	if is_on_floor() and dashTimer <= 0:
 		dashRemaining = CharacterMovement.Dash_Count;
+		
 	
 ## Character Jump Event - you have to run it as long as the button is pressed 
 ## Usage
@@ -134,7 +141,7 @@ func _HandleJump() -> void:
 			_last_jump_type = 1;
 			_rem_coyoto_time = 0;
 			var jumpH = (CharacterMovement.JumpHeight if !is_buffered else _bufferedJumpStrength  ) * CharacterMovement.GravityScale * physicsfps;
-			cVelocity.y = -jumpH;
+			cVelocity.y -= jumpH + abs(CharacterVelocity.x) * 20
 			jumping = true;
 			if jumpingPressed: 
 				_rem_jumpbuffer = 0;
