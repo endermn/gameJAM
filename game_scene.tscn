@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
 [ext_resource type="Texture2D" uid="uid://de2gsxlph354x" path="res://assets/Machina_Dash_Ram.png" id="3_e35lh"]
+[ext_resource type="Texture2D" uid="uid://cp16adpaffqwr" path="res://assets/Machina_Skate_Braking.png" id="3_udeyl"]
 [ext_resource type="Texture2D" uid="uid://e1rua7c8g5qv" path="res://assets/Machina_Skate_Faster.png" id="4_6e45b"]
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
@@ -11,6 +12,30 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(13, 31.999992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t06ws"]
+atlas = ExtResource("3_udeyl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvt5"]
+atlas = ExtResource("3_udeyl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyyqo"]
+atlas = ExtResource("3_udeyl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_magc2"]
+atlas = ExtResource("3_udeyl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtvpm"]
+atlas = ExtResource("3_udeyl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nf4l"]
+atlas = ExtResource("3_udeyl")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udeyl"]
 atlas = ExtResource("3_e35lh")
@@ -104,6 +129,29 @@ region = Rect2(288, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t06ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pvt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyyqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_magc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtvpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nf4l")
+}],
+"loop": 1,
+"name": &"braking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_udeyl")
 }, {
 "duration": 1.0,
@@ -138,10 +186,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_mj2jn")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_kdryc")
 }],
 "loop": 1,
@@ -223,8 +271,7 @@ shape = SubResource("RectangleShape2D_penkd")
 position = Vector2(-213.5, -116.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
-animation = &"dash"
-frame_progress = 0.21887496
+animation = &"braking"
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]

@@ -3,6 +3,7 @@ extends CharacterControllerPlatformer
 
 var facing = 1.0
 var max_velocity = 2
+var breaking_force = 0.03
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
  
 func _physics_process(delta: float) -> void:
@@ -20,9 +21,12 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = false
 		else:
 			animated_sprite.flip_h = true
-	elif CanDash():
-		animated_sprite.play("default")
-		animated_sprite.frame = 0
+	elif CanDash() and onFloor:
+		if abs(CharacterVelocity.x) > 0 and facing == sign(CharacterVelocity.x):
+			animated_sprite.play("braking")
+			CharacterVelocity.x -= breaking_force * sign(CharacterVelocity.x)
+		else:
+			animated_sprite.play("default")
 		
 		
 	if onFloor:
