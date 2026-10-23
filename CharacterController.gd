@@ -34,6 +34,7 @@ signal onDash
 signal onDashFinished
 
 func Dash(direction:float):
+		
 		dashRemaining -= 1;
 		var multiplier:Vector2 = Vector2.ONE;
 		var _d = round(rad_to_deg(direction))

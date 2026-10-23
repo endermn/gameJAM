@@ -13,20 +13,18 @@ func _physics_process(delta: float) -> void:
 		CharacterVelocity.x = max_velocity * sign(CharacterVelocity.x)
 	
 	if input_dir.x != 0:
-		facing = sign(input_dir.x) 
-		animated_sprite.play("sprint")
+		facing = sign(input_dir.x)
+		if CanDash():
+			animated_sprite.play("sprint")
 		if facing > 0:
 			animated_sprite.flip_h = false
 		else:
 			animated_sprite.flip_h = true
-	else:
+	elif CanDash():
 		animated_sprite.play("default")
 		animated_sprite.frame = 0
-		animated_sprite.pause()
 		
 		
-	if Input.is_action_just_pressed("jump"):
-		Jump()
 	if onFloor:
 		CharacterVelocity.x -= CharacterMovement.Friction * abs(CharacterVelocity.x) * sign(CharacterVelocity.x)
 	
@@ -39,8 +37,12 @@ func _physics_process(delta: float) -> void:
 		print(dash_dir)
 		if dash_dir.x == 0:
 			CharacterVelocity.x = 0
-		if input_dir.x != sign(CharacterVelocity.x):
+		if facing != sign(CharacterVelocity.x):
 			CharacterVelocity.x *= -1
-		
+		animated_sprite.play("dash")
 		Dash(dash_dir.angle())
+		dashTimer = dashCooldown
+	if Input.is_action_just_pressed("jump"):
+		dashRemaining = 1
+		Jump()
 	super._physics_process(delta)	
