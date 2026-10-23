@@ -4,6 +4,8 @@
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
+[ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
+[ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj2jn"]
 atlas = ExtResource("4_mixcd")
@@ -40,6 +42,20 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67ers"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mj2jn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_penkd"]
+radius = 5.0
 
 [node name="Node2D" type="Node2D" unique_id=1355961116]
 
@@ -94,3 +110,16 @@ sprite_frames = SubResource("SpriteFrames_soinu")
 position = Vector2(350.76926, -0.6277437)
 scale = Vector2(1.25, 1.17811)
 sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="Chicken" type="CharacterBody2D" parent="." unique_id=590878564]
+motion_mode = 1
+script = ExtResource("5_kdryc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Chicken" unique_id=2038744633]
+position = Vector2(-187.5, -131.5)
+scale = Vector2(0.40625, 0.40625)
+sprite_frames = SubResource("SpriteFrames_67ers")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chicken" unique_id=1398274652]
+position = Vector2(-187.5, -131.5)
+shape = SubResource("CircleShape2D_penkd")
