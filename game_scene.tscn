@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://1mtppctx0rin" path="res://movement.gd" id="1_po0ka"]
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
+[ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soinu"]
-size = Vector2(387, 161)
+size = Vector2(384.5, 66)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_penkd"]
 animations = [{
@@ -18,11 +19,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj2jn"]
+atlas = ExtResource("4_mixcd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdryc"]
+atlas = ExtResource("4_mixcd")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wj57k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v1wow")
+"texture": SubResource("AtlasTexture_mj2jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdryc")
 }],
 "loop": 1,
 "name": &"default",
@@ -30,7 +42,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
-size = Vector2(61, 62.125)
+size = Vector2(13, 31.999992)
 
 [node name="Node2D" type="Node2D" unique_id=1355961116]
 
@@ -51,12 +63,12 @@ script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=2084181287]
-position = Vector2(-36.499996, -74.5)
-scale = Vector2(0.52343744, 0.52343744)
+position = Vector2(-41.5, -62.500004)
+scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1524645715]
-position = Vector2(-36, -75)
+position = Vector2(-41.5, -60.000004)
 shape = SubResource("RectangleShape2D_penkd")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1726395647]
@@ -71,7 +83,7 @@ drag_bottom_margin = 0.5
 position = Vector2(-15, 76)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1125628114]
-position = Vector2(-40, 64)
+position = Vector2(-38.75, 18)
 shape = SubResource("RectangleShape2D_soinu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=1768222061]
