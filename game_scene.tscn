@@ -5,20 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_soinu"]
-size = Vector2(384.5, 66)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_penkd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_v1wow")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj2jn"]
 atlas = ExtResource("4_mixcd")
 region = Rect2(0, 0, 32, 32)
@@ -44,34 +30,33 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(13, 31.999992)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_soinu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1wow")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D" unique_id=1355961116]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1394398365]
-position = Vector2(-30, 152)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1459535237]
-position = Vector2(332, -104)
-shape = SubResource("RectangleShape2D_soinu")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D2" unique_id=726980828]
-position = Vector2(348, -107.5)
-scale = Vector2(3.2656252, 1.2109375)
-sprite_frames = SubResource("SpriteFrames_penkd")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1897136791]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1897136791]
 script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=2084181287]
-position = Vector2(-41.5, -62.500004)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=2084181287]
+position = Vector2(-213.5, -116.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1524645715]
-position = Vector2(-41.5, -60.000004)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1524645715]
+position = Vector2(-213.5, -114)
 shape = SubResource("RectangleShape2D_penkd")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1726395647]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.5
@@ -82,11 +67,30 @@ drag_bottom_margin = 0.5
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=481126356]
 position = Vector2(-15, 76)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1125628114]
-position = Vector2(-38.75, 18)
-shape = SubResource("RectangleShape2D_soinu")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=963725822]
+polygon = PackedVector2Array(-224, -76, -225, -168, -149, -171, -149, -81, -4, -78, 69, -80, 68, -134, 118, -134, 120, -77, 206, -77, 206, -143, 266, -140, 265, -78, 324, -80, 319, -221, 400, -229, 406, 72, -231, 59)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=1768222061]
-position = Vector2(-4.0000305, 21)
-scale = Vector2(3.1093752, 0.5625)
-sprite_frames = SubResource("SpriteFrames_penkd")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=553771171]
+position = Vector2(89, -5.499997)
+scale = Vector2(4.9375, 1.0859375)
+sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/AnimatedSprite2D" unique_id=541632391]
+position = Vector2(-55.49368, -108.20145)
+scale = Vector2(0.13244174, 0.7066331)
+sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=121735814]
+position = Vector2(835.2998, -29.77967)
+scale = Vector2(0.97419184, 1.6259438)
+sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=1590684311]
+position = Vector2(-421.04498, 32.97561)
+scale = Vector2(0.6377006, 0.37204704)
+sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=1384205276]
+position = Vector2(350.76926, -0.6277437)
+scale = Vector2(1.25, 1.17811)
+sprite_frames = SubResource("SpriteFrames_soinu")
