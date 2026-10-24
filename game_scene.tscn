@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
+[ext_resource type="Texture2D" uid="uid://jxbj4opt45ev" path="res://assets/Machina_Jet_Jump.png" id="7_daj04"]
 [ext_resource type="Script" uid="uid://bonuji8n8214y" path="res://hurtbox.gd" id="7_miq82"]
 [ext_resource type="AudioStream" uid="uid://c2xfwytuepj0r" path="res://Inside Night Storm.wav" id="12_ueiaa"]
 
@@ -87,6 +88,18 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdryc"]
 atlas = ExtResource("4_mixcd")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxwtw"]
+atlas = ExtResource("7_daj04")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hpar"]
+atlas = ExtResource("7_daj04")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qokk"]
+atlas = ExtResource("7_daj04")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snaye"]
 atlas = ExtResource("4_6e45b")
@@ -201,6 +214,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_cxwtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hpar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qokk")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_snaye")
 }, {
 "duration": 1.0,
@@ -295,8 +322,8 @@ shape = SubResource("RectangleShape2D_penkd")
 position = Vector2(-8.5, -10.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
-animation = &"sprint"
-frame = 7
+animation = &"jump"
+frame_progress = 0.22456335
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]

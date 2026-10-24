@@ -3,7 +3,10 @@ extends CharacterControllerPlatformer
 
 var facing = 1.0
 var max_velocity = 2
+var max_cvelocity = 300
 var breaking_force = 0.03
+	
+var jump_animation_vel = 50
 @export var max_health = 100
 var current_health = max_health
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -14,7 +17,10 @@ func _physics_process(delta: float) -> void:
 	CharacterVelocity.x += input_dir.x * CharacterMovement.Acceleration * delta
 	if abs(CharacterVelocity.x) >= max_velocity:
 		CharacterVelocity.x = max_velocity * sign(CharacterVelocity.x)
-	
+	if abs(CharacterVelocity.y) >= max_velocity:
+		CharacterVelocity.y = max_velocity * sign(CharacterVelocity.y)
+	if abs(cVelocity.y) >= max_cvelocity:
+		cVelocity.y = max_cvelocity * sign(cVelocity.y)
 	if input_dir.x != 0:
 		facing = sign(input_dir.x)
 		if CanDash():
@@ -44,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		var dash_dir := input_dir
 		if dash_dir == Vector2.ZERO:
 			dash_dir = Vector2(facing, 0.0)
-		print(dash_dir)
 		if dash_dir.x == 0:
 			CharacterVelocity.x = 0
 		if facing != sign(CharacterVelocity.x):
@@ -60,4 +65,17 @@ func _physics_process(delta: float) -> void:
 			sound_player.stream = preload("res://assets/jetpack.wav")
 			sound_player.play()
 		Jump()
+	
+	if !onFloor and cVelocity.y < jump_animation_vel and cVelocity.y > -jump_animation_vel:
+		animated_sprite.play("jump")
+		animated_sprite.frame = 1
+		animated_sprite.pause()
+	elif !onFloor and cVelocity.y > jump_animation_vel:
+		animated_sprite.play("jump")
+		animated_sprite.frame = 2
+		animated_sprite.pause()
+	elif !onFloor and cVelocity.y < -jump_animation_vel:
+		animated_sprite.play("jump")
+		animated_sprite.frame = 0
+		animated_sprite.pause()
 	super._physics_process(delta)	
