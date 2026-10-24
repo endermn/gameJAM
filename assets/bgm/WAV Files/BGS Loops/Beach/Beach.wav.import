@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpw3n6xvf02nn"
+path="res://.godot/imported/Beach.wav-724734763930e9e98c08d6fd7650753b.sample"
+
+[deps]
+
+source_file="res://assets/bgm/WAV Files/BGS Loops/Beach/Beach.wav"
+dest_files=["res://.godot/imported/Beach.wav-724734763930e9e98c08d6fd7650753b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
