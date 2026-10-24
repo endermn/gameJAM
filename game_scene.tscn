@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://d27e0kvy8c3i7" path="res://hitbox.gd" id="3_j5hk1"]
 [ext_resource type="Texture2D" uid="uid://cp16adpaffqwr" path="res://assets/Machina_Skate_Braking.png" id="3_udeyl"]
 [ext_resource type="Texture2D" uid="uid://e1rua7c8g5qv" path="res://assets/Machina_Skate_Faster.png" id="4_6e45b"]
+[ext_resource type="Texture2D" uid="uid://dcstkf5yq8rp6" path="res://assets/Yoyo_spin_with_string.png" id="4_bpcsf"]
 [ext_resource type="Texture2D" uid="uid://cmnnlu4gqlc7o" path="res://assets/Machina_Idle_Sway.png" id="4_mixcd"]
+[ext_resource type="Texture2D" uid="uid://be4o824fl4n64" path="res://assets/Machina_Yoyo_Launch.png" id="4_opqoc"]
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
 [ext_resource type="Texture2D" uid="uid://jxbj4opt45ev" path="res://assets/Machina_Jet_Jump.png" id="7_daj04"]
@@ -15,8 +17,62 @@
 [ext_resource type="PackedScene" uid="uid://bwpt3q8qaj7d2" path="res://enemy.tscn" id="12_ueiaa"]
 [ext_resource type="AudioStream" uid="uid://c2xfwytuepj0r" path="res://Inside Night Storm.wav" id="13_bgm"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxisk"]
+atlas = ExtResource("4_bpcsf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3npr"]
+atlas = ExtResource("4_bpcsf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_opqoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxisk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3npr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(35, 31.999992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t5pe"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2sjb"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e02u1"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20o3c"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3lgf"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7ufo"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1igs"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22w0m"]
+atlas = ExtResource("4_opqoc")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t06ws"]
 atlas = ExtResource("3_udeyl")
@@ -144,6 +200,35 @@ region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wj57k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t5pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2sjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e02u1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20o3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3lgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7ufo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1igs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22w0m")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t06ws")
@@ -308,14 +393,23 @@ script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
 
 [node name="Hitbox" type="Area2D" parent="Player" unique_id=695870668 node_paths=PackedStringArray("actor")]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_j5hk1")
 actor = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Hitbox" unique_id=2141346731]
-position = Vector2(0, -5)
-polygon = PackedVector2Array(-2, -13, 45, -13, 45, -5, -2, -5)
+position = Vector2(3.5111713, -6.684375)
+scale = Vector2(1.2180852, 0.89062494)
+polygon = PackedVector2Array(-6.5768585, -13.828064, 45.14367, -13.828064, 45.14367, 7.5052643, -6.5768585, 7.5052643)
+
+[node name="PlayerHitboxSprite" type="AnimatedSprite2D" parent="Player/Hitbox" unique_id=412193367]
+unique_name_in_owner = true
+visible = false
+position = Vector2(34.500004, -9.499996)
+scale = Vector2(1.4374996, 0.9062502)
+sprite_frames = SubResource("SpriteFrames_opqoc")
 
 [node name="collision" type="CollisionShape2D" parent="Player" unique_id=1524645715]
 position = Vector2(-10, -8)
@@ -325,8 +419,9 @@ shape = SubResource("RectangleShape2D_penkd")
 position = Vector2(-8.5, -10.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
-animation = &"jump"
-frame_progress = 0.22456335
+animation = &"attack"
+frame = 5
+frame_progress = 0.7679843
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]
@@ -401,7 +496,7 @@ position = Vector2(350.76926, -0.6277437)
 scale = Vector2(1.25, 1.17811)
 sprite_frames = SubResource("SpriteFrames_soinu")
 
-[node name="Node2D" parent="." unique_id=1148984116 instance=ExtResource("12_ueiaa")]
+[node name="Enemy" parent="." unique_id=1148984116 instance=ExtResource("12_ueiaa")]
 position = Vector2(-41, -32)
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=791946385]
