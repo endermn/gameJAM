@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://1mtppctx0rin" path="res://movement.gd" id="1_po0ka"]
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://PlayerData.tres" id="2_mixcd"]
-[ext_resource type="Texture2D" uid="uid://sygqvnm44xm6" path="res://icon.svg" id="2_v1wow"]
 [ext_resource type="Texture2D" uid="uid://de2gsxlph354x" path="res://assets/Machina_Dash_Ram.png" id="3_e35lh"]
 [ext_resource type="Script" uid="uid://d27e0kvy8c3i7" path="res://hitbox.gd" id="3_j5hk1"]
 [ext_resource type="Texture2D" uid="uid://cp16adpaffqwr" path="res://assets/Machina_Skate_Braking.png" id="3_udeyl"]
@@ -16,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bonuji8n8214y" path="res://hurtbox.gd" id="7_miq82"]
 [ext_resource type="PackedScene" uid="uid://bwpt3q8qaj7d2" path="res://enemy.tscn" id="12_ueiaa"]
 [ext_resource type="AudioStream" uid="uid://c2xfwytuepj0r" path="res://Inside Night Storm.wav" id="13_bgm"]
+[ext_resource type="PackedScene" uid="uid://dfeeit8gfxeg6" path="res://map_everything.tscn" id="17_3d2pr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxisk"]
 atlas = ExtResource("4_bpcsf")
@@ -365,29 +365,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_penkd"]
 radius = 6.0
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_hf1wm"]
-vertices = PackedVector2Array(-150, -104, -236.28906, -104, -231.74219, -150.89063, 296.04688, -143.29688, 300.71875, -11.71875, 258.1328, -10.28125, 259.1172, -71.60156, 183, -75.40625, 183, -9, 112.72656, -9, 110.71875, -66, 44.851563, -66, -19.101563, -10, -150, -11.8828125, 45.851563, -11.78125)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3), PackedInt32Array(0, 3, 6, 7), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(0, 7, 10, 11), PackedInt32Array(12, 13, 0, 11, 14)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-245, -97, -245, 132, 393, 150, 387, -157, -239, -159)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_soinu"]
+vertices = PackedVector2Array(1192.0938, 355.9375, -793.8828, 345.04688, -786.1094, -347.04688, 1198.8984, -357.9375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-796, -357, -804, 355, 1202, 366, 1209, -368)])
 parsed_geometry_type = 1
-parsed_collision_mask = 1
-agent_radius = 8.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_soinu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_v1wow")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Node2D" type="Node2D" unique_id=1355961116]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1897136791 groups=["player"]]
-position = Vector2(-213.5, -114)
+position = Vector2(-101, 161)
 collision_layer = 2
 script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
@@ -425,7 +412,6 @@ frame_progress = 0.7679843
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]
-zoom = Vector2(0.51, 0.51)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.3
@@ -444,7 +430,7 @@ position = Vector2(-8.5, -8)
 shape = SubResource("RectangleShape2D_67ers")
 
 [node name="Chicken" type="CharacterBody2D" parent="." unique_id=590878564 node_paths=PackedStringArray("player")]
-position = Vector2(-188, -131)
+position = Vector2(-75.5, 144)
 collision_layer = 16
 motion_mode = 1
 script = ExtResource("5_kdryc")
@@ -462,40 +448,6 @@ shape = SubResource("CircleShape2D_penkd")
 path_desired_distance = 3.0
 target_desired_distance = 1.0
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=298145508]
-navigation_polygon = SubResource("NavigationPolygon_hf1wm")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D" unique_id=481126356]
-position = Vector2(-15, 76)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D" unique_id=963725822]
-polygon = PackedVector2Array(-227, -76, -227, -172, -143, -172, -143, -75, -5, -75, 33, -106, 67, -135, 119, -135, 119, -75, 203, -75, 203, -140, 268, -140, 268, -75, 319, -75, 319, -226, 405, -226, 406, 64, -227, 63)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D" unique_id=553771171]
-position = Vector2(89, -5.499997)
-scale = Vector2(4.9375, 1.0859375)
-sprite_frames = SubResource("SpriteFrames_soinu")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D/AnimatedSprite2D" unique_id=541632391]
-position = Vector2(-55.49368, -108.20145)
-scale = Vector2(0.13244174, 0.7066331)
-sprite_frames = SubResource("SpriteFrames_soinu")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=121735814]
-position = Vector2(835.2998, -29.77967)
-scale = Vector2(0.97419184, 1.6259438)
-sprite_frames = SubResource("SpriteFrames_soinu")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=1590684311]
-position = Vector2(-421.04498, 32.97561)
-scale = Vector2(0.6377006, 0.37204704)
-sprite_frames = SubResource("SpriteFrames_soinu")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D" unique_id=1384205276]
-position = Vector2(350.76926, -0.6277437)
-scale = Vector2(1.25, 1.17811)
-sprite_frames = SubResource("SpriteFrames_soinu")
-
 [node name="Enemy" parent="." unique_id=1148984116 instance=ExtResource("12_ueiaa")]
 position = Vector2(-41, -32)
 
@@ -505,3 +457,123 @@ autoplay = true
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=967540283]
 unique_name_in_owner = true
+
+[node name="Node2D" parent="." unique_id=516055607 instance=ExtResource("12_ueiaa")]
+position = Vector2(-240, 144)
+
+[node name="Node2D2" parent="." unique_id=113864425 instance=ExtResource("12_ueiaa")]
+position = Vector2(-102, 76)
+
+[node name="Node2D3" parent="." unique_id=2146796722 instance=ExtResource("12_ueiaa")]
+position = Vector2(10, 133)
+
+[node name="Node2D4" parent="." unique_id=1389732982 instance=ExtResource("12_ueiaa")]
+position = Vector2(89, 151)
+
+[node name="Node2D5" parent="." unique_id=1402903876 instance=ExtResource("12_ueiaa")]
+position = Vector2(130, 16)
+
+[node name="Node2D6" parent="." unique_id=542832458 instance=ExtResource("12_ueiaa")]
+position = Vector2(233, 86)
+
+[node name="Node2D7" parent="." unique_id=569393833 instance=ExtResource("12_ueiaa")]
+position = Vector2(383, -40)
+
+[node name="Map" type="StaticBody2D" parent="." unique_id=455268777]
+disable_mode = 1
+collision_layer = 3
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Map" unique_id=1063328672]
+polygon = PackedVector2Array(-615, 105, -440, 104, -438, 328, -615, 329)
+
+[node name="map_everything" parent="Map" unique_id=417585599 instance=ExtResource("17_3d2pr")]
+position = Vector2(0, 2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map" unique_id=975906814]
+position = Vector2(-223, 10)
+polygon = PackedVector2Array(-552, 264, -438, 264, -435, 321, -558, 321)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Map" unique_id=819231472]
+polygon = PackedVector2Array(-297, 246, -237, 243, -115, 177, 222, 179, 289, 148, 386, 50, 458, 51, 462, 108, 684, 114, 687, 336, -302, 332)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Map" unique_id=250390496]
+polygon = PackedVector2Array(759, 133, 847, 130, 845, 326, 757, 330)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Map" unique_id=101433886]
+position = Vector2(-3, -2)
+polygon = PackedVector2Array(102, -155, 190, -156, 190, -139, 103, -139)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Map" unique_id=862204091]
+polygon = PackedVector2Array(-428, -75, -339, -77, -339, -26, -426, -28)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Map" unique_id=1204259134]
+polygon = PackedVector2Array(-589, -106, -499, -104, -501, -62, -586, -62)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Map" unique_id=1469002105]
+polygon = PackedVector2Array(969, 152, 1048, 151, 1051, 334, 965, 335)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Map" unique_id=484995744]
+polygon = PackedVector2Array(1092, 103, 1147, 104, 1149, 255, 1091, 256)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Map" unique_id=2111032784]
+polygon = PackedVector2Array(549, 6, 635, 6, 634, 24, 552, 22)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Map" unique_id=1145369722]
+polygon = PackedVector2Array(710, -41, 795, -42, 794, -25, 713, -25, 711, -37)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Map" unique_id=853852273]
+polygon = PackedVector2Array(853, -106, 940, -106, 939, -90, 854, -90)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Map" unique_id=1815380306]
+polygon = PackedVector2Array(421, -232, 634, -233, 633, -218, 423, -217)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Map" unique_id=196011878]
+polygon = PackedVector2Array(455, -153, 540, -153, 538, -137, 458, -137)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Map" unique_id=1593912119]
+polygon = PackedVector2Array(243, -107, 268, -107, 269, -101, 247, -102)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Map" unique_id=1639050016]
+polygon = PackedVector2Array(100, -77, 189, -77, 189, -70, 99, -70)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="Map" unique_id=582057812]
+polygon = PackedVector2Array(98, -12, 192, -11, 192, -6, 98, -6)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Map" unique_id=205540927]
+polygon = PackedVector2Array(99, 51, 193, 52, 193, 56, 98, 57)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="Map" unique_id=1736644547]
+polygon = PackedVector2Array(-606, -172, -514, -172, -514, -167, -606, -167)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="Map" unique_id=158523186]
+polygon = PackedVector2Array(-463, -124, -369, -123, -369, -119, -463, -119)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Map" unique_id=494281909]
+polygon = PackedVector2Array(-284, -77, -256, -78, -257, -71, -283, -71)
+
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="Map" unique_id=2145709604]
+polygon = PackedVector2Array(-221, -45, -195, -45, -195, -41, -221, -39)
+
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="Map" unique_id=1679388602]
+polygon = PackedVector2Array(-157, -13, -128, -13, -128, -7, -157, -6)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="Map" unique_id=193712443]
+polygon = PackedVector2Array(-93, 20, -66, 20, -67, 24, -91, 25)
+
+[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="Map" unique_id=1998010984]
+polygon = PackedVector2Array(-28, 52, -3, 52, -3, 55, -27, 57)
+
+[node name="CollisionPolygon2D26" type="CollisionPolygon2D" parent="Map" unique_id=921729419]
+polygon = PackedVector2Array(99, 116, 191, 117, 191, 121, 99, 121)
+
+[node name="CollisionPolygon2D27" type="CollisionPolygon2D" parent="Map" unique_id=94435772]
+polygon = PackedVector2Array(-620, 102, -437, 103, -435, 334, -619, 337)
+
+[node name="CollisionPolygon2D28" type="CollisionPolygon2D" parent="Map" unique_id=572288633]
+polygon = PackedVector2Array(-394, 151, -371, 150, -372, 169, -391, 169)
+
+[node name="CollisionPolygon2D29" type="CollisionPolygon2D" parent="Map" unique_id=607207354]
+polygon = PackedVector2Array(-347, 199, -325, 199, -324, 216, -341, 215)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=329902456]
+navigation_polygon = SubResource("NavigationPolygon_soinu")
