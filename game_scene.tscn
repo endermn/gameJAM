@@ -343,7 +343,7 @@ navigation_polygon = SubResource("NavigationPolygon_hf1wm")
 position = Vector2(-15, 76)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D" unique_id=963725822]
-polygon = PackedVector2Array(-227, -76, -227, -172, -143, -172, -143, -75, -5, -75, 67, -75, 67, -135, 119, -135, 119, -75, 203, -75, 203, -140, 268, -140, 268, -75, 319, -75, 319, -226, 405, -226, 406, 64, -227, 63)
+polygon = PackedVector2Array(-227, -76, -227, -172, -143, -172, -143, -75, -5, -75, 33, -106, 67, -135, 119, -135, 119, -75, 203, -75, 203, -140, 268, -140, 268, -75, 319, -75, 319, -226, 405, -226, 406, 64, -227, 63)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D" unique_id=553771171]
 position = Vector2(89, -5.499997)

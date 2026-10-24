@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcjhijpq2umyp"
+path="res://.godot/imported/Forest Night.wav-d858567dcc03432568aa3d64c68c2890.sample"
+
+[deps]
+
+source_file="res://assets/bgm/WAV Files/BGS Loops/Forest Night/Forest Night.wav"
+dest_files=["res://.godot/imported/Forest Night.wav-d858567dcc03432568aa3d64c68c2890.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

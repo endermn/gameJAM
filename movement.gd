@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 			if !sound_player.is_playing():
 				sound_player.stream = preload("res://Roller Skating Sound Effect ⛸🔉 HQ.mp3")
 				sound_player.play()
-				animated_sprite.play("sprint")
+			animated_sprite.play("sprint")
 		if facing > 0:
 			animated_sprite.flip_h = false
 		else:
@@ -50,10 +50,14 @@ func _physics_process(delta: float) -> void:
 		if facing != sign(CharacterVelocity.x):
 			CharacterVelocity.x *= -1
 		animated_sprite.play("dash")
+		sound_player.stream = preload("res://assets/dash.wav")
+		sound_player.play()
 		Dash(dash_dir.angle())
 		dashTimer = dashCooldown
 	if Input.is_action_just_pressed("jump"):
 		if onFloor:
 			dashRemaining = 1
+			sound_player.stream = preload("res://assets/jetpack.wav")
+			sound_player.play()
 		Jump()
 	super._physics_process(delta)	
