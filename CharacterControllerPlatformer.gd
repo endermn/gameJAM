@@ -54,8 +54,8 @@ func _physics_process(delta: float) -> void:
 	if onFloor && !is_on_floor(): emit_signal("onAir")
 	onFloor = is_on_floor();
 	onCeil  = is_on_ceiling();
-	rightWall  = test_move(transform, Vector2(CharacterMovement.Wall_SafeMargin,0));
-	leftWall  = test_move(transform, Vector2(-CharacterMovement.Wall_SafeMargin,0));
+	rightWall = is_on_wall() and get_wall_normal().x < 0.0
+	leftWall = is_on_wall() and get_wall_normal().x > 0.0
 	onWall = rightWall || leftWall;
 	
 	onEdge = !test_move(global_transform.translated(Vector2(CharacterMovement.EdgeCheckDistance*_last_turned_dir,1)), Vector2(0,1))

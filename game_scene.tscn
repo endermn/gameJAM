@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://bonuji8n8214y" path="res://hurtbox.gd" id="7_miq82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
-size = Vector2(13, 31.999992)
+size = Vector2(35, 31.999992)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t06ws"]
 atlas = ExtResource("3_udeyl")
@@ -229,7 +229,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_glbr4")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"sprint",
 "speed": 5.0
 }]
@@ -252,7 +252,7 @@ animations = [{
 radius = 6.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hf1wm"]
-vertices = PackedVector2Array(-156, -103.32031, -236.65625, -100.140625, -231.74219, -150.96875, 295.84375, -149.28906, 300.71875, -11.71875, 258.1328, -10.28125, 259.1172, -71.60156, 183, -75.40625, 183, -9, 112.72656, -9, 110.71875, -66, 44.851563, -66, -19.046875, -10, -156, -12.828125, 45.851563, -11.78125)
+vertices = PackedVector2Array(-150, -104, -236.28906, -104, -231.74219, -150.89063, 296.04688, -143.29688, 300.71875, -11.71875, 258.1328, -10.28125, 259.1172, -71.60156, 183, -75.40625, 183, -9, 112.72656, -9, 110.71875, -66, 44.851563, -66, -19.101563, -10, -150, -11.8828125, 45.851563, -11.78125)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3), PackedInt32Array(0, 3, 6, 7), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(0, 7, 10, 11), PackedInt32Array(12, 13, 0, 11, 14)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-245, -97, -245, 132, 393, 150, 387, -157, -239, -159)])
 parsed_geometry_type = 1
@@ -288,13 +288,15 @@ position = Vector2(0, -5)
 polygon = PackedVector2Array(-2, -13, 45, -13, 45, -5, -2, -5)
 
 [node name="collision" type="CollisionShape2D" parent="Player" unique_id=1524645715]
-position = Vector2(-8.5, -8)
+position = Vector2(-10, -8)
 shape = SubResource("RectangleShape2D_penkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=2084181287]
 position = Vector2(-8.5, -10.5)
 scale = Vector2(1.15625, 1.1562495)
 sprite_frames = SubResource("SpriteFrames_wj57k")
+animation = &"sprint"
+frame = 7
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1726395647]
@@ -341,7 +343,7 @@ navigation_polygon = SubResource("NavigationPolygon_hf1wm")
 position = Vector2(-15, 76)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D" unique_id=963725822]
-polygon = PackedVector2Array(-224, -76, -225, -168, -149, -171, -149, -81, -4, -78, 69, -80, 68, -134, 118, -134, 120, -77, 206, -77, 206, -143, 266, -140, 265, -78, 324, -80, 319, -221, 400, -229, 406, 72, -231, 59)
+polygon = PackedVector2Array(-227, -76, -227, -172, -143, -172, -143, -75, -5, -75, 67, -75, 67, -135, 119, -135, 119, -75, 203, -75, 203, -140, 268, -140, 268, -75, 319, -75, 319, -226, 405, -226, 406, 64, -227, 63)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D" unique_id=553771171]
 position = Vector2(89, -5.499997)
