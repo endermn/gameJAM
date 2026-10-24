@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0h0d3wnfbp8q"
+path="res://.godot/imported/Bow Impact Hit 2.wav-737ec270cf7f8afb6ed9d0f759adbeac.sample"
+
+[deps]
+
+source_file="res://assets/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Attacks/Bow Attacks Hits and Blocks/Bow Impact Hit 2.wav"
+dest_files=["res://.godot/imported/Bow Impact Hit 2.wav-737ec270cf7f8afb6ed9d0f759adbeac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

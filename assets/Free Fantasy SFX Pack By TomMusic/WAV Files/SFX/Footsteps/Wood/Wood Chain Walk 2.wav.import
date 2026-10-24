@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjdknaggr4x6i"
+path="res://.godot/imported/Wood Chain Walk 2.wav-cfa05c9dafb12d42e9dbeff045e21a9f.sample"
+
+[deps]
+
+source_file="res://assets/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Footsteps/Wood/Wood Chain Walk 2.wav"
+dest_files=["res://.godot/imported/Wood Chain Walk 2.wav-cfa05c9dafb12d42e9dbeff045e21a9f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

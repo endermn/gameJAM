@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1o16farwiyju"
+path="res://.godot/imported/chop 2.wav-f4045fb08cdc86c986ef5c9b44af5d74.sample"
+
+[deps]
+
+source_file="res://assets/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Chopping and Mining/chop 2.wav"
+dest_files=["res://.godot/imported/chop 2.wav-f4045fb08cdc86c986ef5c9b44af5d74.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

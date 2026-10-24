@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmm2jo8nl1u56"
+path="res://.godot/imported/Sword Parry 2.wav-80d62b5bb9cefa332002cde51e937ed9.sample"
+
+[deps]
+
+source_file="res://assets/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Attacks/Sword Attacks Hits and Blocks/Sword Parry 2.wav"
+dest_files=["res://.godot/imported/Sword Parry 2.wav-80d62b5bb9cefa332002cde51e937ed9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

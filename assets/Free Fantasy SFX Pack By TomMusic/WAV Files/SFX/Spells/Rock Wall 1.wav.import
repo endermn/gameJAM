@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://caefwyb2sjbsd"
+path="res://.godot/imported/Rock Wall 1.wav-c7a14abc1564cb7554404030c75b2561.sample"
+
+[deps]
+
+source_file="res://assets/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Spells/Rock Wall 1.wav"
+dest_files=["res://.godot/imported/Rock Wall 1.wav-c7a14abc1564cb7554404030c75b2561.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

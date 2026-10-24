@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2xfwytuepj0r"
+path="res://.godot/imported/Inside Night Storm.wav-f8765eb077f6d46230ceb79f7d34a12c.sample"
+
+[deps]
+
+source_file="res://Inside Night Storm.wav"
+dest_files=["res://.godot/imported/Inside Night Storm.wav-f8765eb077f6d46230ceb79f7d34a12c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

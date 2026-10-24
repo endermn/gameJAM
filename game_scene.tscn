@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
 [ext_resource type="Script" uid="uid://bonuji8n8214y" path="res://hurtbox.gd" id="7_miq82"]
+[ext_resource type="AudioStream" uid="uid://c2xfwytuepj0r" path="res://Inside Night Storm.wav" id="12_ueiaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(13, 31.999992)
@@ -274,7 +275,6 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1897136791]
 position = Vector2(-213.5, -114)
-collision_layer = 2
 script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
 
@@ -317,7 +317,7 @@ shape = SubResource("RectangleShape2D_67ers")
 
 [node name="Chicken" type="CharacterBody2D" parent="." unique_id=590878564 node_paths=PackedStringArray("player")]
 position = Vector2(-188, -131)
-collision_layer = 0
+collision_layer = 16
 motion_mode = 1
 script = ExtResource("5_kdryc")
 player = NodePath("../Player")
@@ -367,3 +367,10 @@ sprite_frames = SubResource("SpriteFrames_soinu")
 position = Vector2(350.76926, -0.6277437)
 scale = Vector2(1.25, 1.17811)
 sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=791946385]
+stream = ExtResource("12_ueiaa")
+autoplay = true
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=967540283]
+unique_name_in_owner = true

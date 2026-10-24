@@ -7,9 +7,9 @@ var breaking_force = 0.03
 @export var max_health = 100
 var current_health = max_health
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
- 
+@onready var sound_player: AudioStreamPlayer2D = %SoundPlayer
+
 func _physics_process(delta: float) -> void:
-	
 	var input_dir := Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	CharacterVelocity.x += input_dir.x * CharacterMovement.Acceleration * delta
 	if abs(CharacterVelocity.x) >= max_velocity:
@@ -18,7 +18,10 @@ func _physics_process(delta: float) -> void:
 	if input_dir.x != 0:
 		facing = sign(input_dir.x)
 		if CanDash():
-			animated_sprite.play("sprint")
+			if !sound_player.is_playing():
+				sound_player.stream = preload("res://Roller Skating Sound Effect ⛸🔉 HQ.mp3")
+				sound_player.play()
+				animated_sprite.play("sprint")
 		if facing > 0:
 			animated_sprite.flip_h = false
 		else:
@@ -28,6 +31,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("braking")
 			CharacterVelocity.x -= breaking_force * sign(CharacterVelocity.x)
 		else:
+			sound_player.stop()
 			animated_sprite.play("default")
 		
 		
