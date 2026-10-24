@@ -7,6 +7,11 @@ var breaking_force = 0.03
 @export var max_health = 100
 var current_health = max_health
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func _ready() -> void:
+	super._ready()
+	current_health = max_health
+	$Hurtbox.recieved_damage.connect(_on_recieved_damage)
  
 func _physics_process(delta: float) -> void:
 	
@@ -52,4 +57,15 @@ func _physics_process(delta: float) -> void:
 		if onFloor:
 			dashRemaining = 1
 		Jump()
-	super._physics_process(delta)	
+	$Hitbox.scale.x = facing
+	if dashIsActive:
+		$Hitbox.begin_attack()
+	else:
+		$Hitbox.end_attack()
+	super._physics_process(delta)
+
+func _on_recieved_damage(amount: int, knockback: Vector2) -> void:
+	if current_health <= 0:
+		return
+	current_health = maxi(current_health - amount, 0)
+	cVelocity += knockback

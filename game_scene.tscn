@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://yxxnihujoria" path="res://chicken.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dissnycm5po1r" path="res://assets/chicken.png" id="5_mj2jn"]
 [ext_resource type="Script" uid="uid://bonuji8n8214y" path="res://hurtbox.gd" id="7_miq82"]
+[ext_resource type="PackedScene" uid="uid://bwpt3q8qaj7d2" path="res://enemy.tscn" id="12_ueiaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_penkd"]
 size = Vector2(35, 31.999992)
@@ -272,16 +273,17 @@ animations = [{
 
 [node name="Node2D" type="Node2D" unique_id=1355961116]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1897136791]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1897136791 groups=["player"]]
 position = Vector2(-213.5, -114)
 collision_layer = 2
 script = ExtResource("1_po0ka")
 CharacterMovement = ExtResource("2_mixcd")
 
-[node name="Hitbox" type="Area2D" parent="Player" unique_id=695870668]
+[node name="Hitbox" type="Area2D" parent="Player" unique_id=695870668 node_paths=PackedStringArray("actor")]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 16
 script = ExtResource("3_j5hk1")
+actor = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Hitbox" unique_id=2141346731]
 position = Vector2(0, -5)
@@ -308,10 +310,11 @@ drag_top_margin = 0.5
 drag_right_margin = 0.3
 drag_bottom_margin = 1.0
 
-[node name="Hurtbox" type="Area2D" parent="Player" unique_id=283932895]
+[node name="Hurtbox" type="Area2D" parent="Player" unique_id=283932895 node_paths=PackedStringArray("actor")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_miq82")
+actor = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox" unique_id=1370162757]
 position = Vector2(-8.5, -8)
@@ -369,3 +372,6 @@ sprite_frames = SubResource("SpriteFrames_soinu")
 position = Vector2(350.76926, -0.6277437)
 scale = Vector2(1.25, 1.17811)
 sprite_frames = SubResource("SpriteFrames_soinu")
+
+[node name="Node2D" parent="." unique_id=1148984116 instance=ExtResource("12_ueiaa")]
+position = Vector2(-41, -32)
